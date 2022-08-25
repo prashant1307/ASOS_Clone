@@ -1,7 +1,34 @@
-import { Box, Button, Center, Divider, Flex, Image, Input, Spacer, Text } from "@chakra-ui/react"
-import { Link } from "react-router-dom"
-
+import { Box, Button, Center, Divider, Flex, FormLabel, Image, Input, Spacer, Text } from "@chakra-ui/react"
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { UseUserAuth } from "../Context/AuthContext"
+import GoogleButton from "react-google-button"
 export const Login=()=>{
+    const [email,setEmail]=useState("")
+    const [password,setPassword]=useState("")
+    const [error,setError]=useState("")
+
+    const {logIn,googleSignIn}=UseUserAuth()
+    const navigate=useNavigate()
+    const handleSubmit=async(e)=>{
+        e.preventDefault()
+        setError("")
+        try {
+            await logIn(email,password)
+            navigate("/")
+        } catch (error) {
+            setError(error.message)
+        }
+    }
+     const handleGoogleSignIn=async(e)=>{
+        e.preventDefault()
+        try {
+            await googleSignIn();
+            navigate("/")
+        } catch (error) {
+            setError(error.message)
+        }
+     }
     return (
         <>
         <Box bg="#EEEEEE" paddingBottom="100px">
@@ -23,13 +50,24 @@ export const Login=()=>{
             <Center height='25px'>
                  <Divider orientation='horizontal' />
             </Center>
-         
-            <Text marginTop="30px" marginBottom="10px" paddingLeft="143px" textAlign="left" fontWeight="600" fontSize="16px" color="RGB(118, 118, 118)">EMAIL ADDRESS:</Text>
+
+            {error && <alert>{error}</alert>}
+            <form onSubmit={handleSubmit}>
+                <FormLabel>email</FormLabel>
+                <Input type="email" onChange={(e)=>setEmail(e.target.value)}/>
+                <FormLabel>password</FormLabel>
+                <Input type="password" onChange={(e)=>setPassword(e.target.value)}/>
+                <Button type="submit">Submit</Button>
+                <GoogleButton type="dark" onClick={handleGoogleSignIn}/>
+            </form>
+            <Box><GoogleButton type="dark" onClick={handleGoogleSignIn}/></Box>
+          
+            {/* <Text marginTop="30px" marginBottom="10px" paddingLeft="143px" textAlign="left" fontWeight="600" fontSize="16px" color="RGB(118, 118, 118)">EMAIL ADDRESS:</Text>
             <Input w="360px" height="50px"/>
             <Text marginTop="30px" marginBottom="10px" paddingLeft="143px" textAlign="left" fontWeight="600" fontSize="16px" color="RGB(118, 118, 118)">PASSWORD:</Text>
-            <Input w="360px" height="50px"/>
+            <Input w="360px" height="50px"/> */}
 
-            <Button marginBottom="40px" bg="rgb(45,45,45)" color="white" marginTop="30px" w="360px">SIGN IN</Button>
+            {/* <Button marginBottom="40px" bg="rgb(45,45,45)" color="white" marginTop="30px" w="360px">SIGN IN</Button> */}
         </Box>
         </Box>
         </>

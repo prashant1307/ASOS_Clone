@@ -1,6 +1,23 @@
-import { Box, Button, Center, Divider, Flex, Image, Input, Spacer, Text } from "@chakra-ui/react"
-import { Link } from "react-router-dom"
+import { Box, Button, Center, Divider, Flex, FormLabel, Image, Input, Spacer, Text } from "@chakra-ui/react"
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { UseUserAuth } from "../Context/AuthContext"
 export const Signup=()=>{
+    const [email,setEmail]=useState("")
+    const [password,setPassword]=useState("")
+    const [error,setError]=useState("")
+    const {signUp}=UseUserAuth()
+    const navigate=useNavigate()
+    const handleSubmit=async(e)=>{
+        e.preventDefault()
+        setError("")
+        try {
+            await signUp(email,password)
+            navigate("/login")
+        } catch (error) {
+            setError(error.message)
+        }
+    }
     return (
         <>
         <Box bg="#EEEEEE" paddingBottom="100px">
@@ -22,9 +39,17 @@ export const Signup=()=>{
             <Center height='25px'>
                  <Divider orientation='horizontal' />
             </Center>
+             {error && <alert>{error}</alert>}
+            <form onSubmit={handleSubmit}>
+                <FormLabel>email</FormLabel>
+                <Input type="email" onChange={(e)=>setEmail(e.target.value)}/>
+                <FormLabel>password</FormLabel>
+                <Input type="password" onChange={(e)=>setPassword(e.target.value)}/>
+                <Button type="submit">Submit</Button>
+            </form>
             {/* <Text marginTop="20px" fontWeight="600" fontSize="20px" fontFamily="futura-pt, Tahoma, Geneva, Verdana, Arial, sans-serif" color="RGB(34, 34, 34)">SIGN UP WITH...</Text> */}
 
-            <Text marginTop="20px" fontWeight="600" fontSize="20px" fontFamily="futura-pt, Tahoma, Geneva, Verdana, Arial, sans-serif" color="RGB(34, 34, 34)">SIGN UP WITH EMAIL</Text>
+            {/* <Text marginTop="20px" fontWeight="600" fontSize="20px" fontFamily="futura-pt, Tahoma, Geneva, Verdana, Arial, sans-serif" color="RGB(34, 34, 34)">SIGN UP WITH EMAIL</Text>
             <Text marginTop="30px" marginBottom="10px" paddingLeft="143px" textAlign="left" fontWeight="600" fontSize="16px" color="RGB(118, 118, 118)">EMAIL ADDRESS:</Text>
             <Input w="360px" height="50px"/>
             <Text marginTop="10px" paddingLeft="143px" textAlign="left">We'll send your order confirmation here</Text>
@@ -34,7 +59,7 @@ export const Signup=()=>{
             <Input w="360px" height="50px"/>
             <Text marginTop="30px" marginBottom="10px" paddingLeft="143px" textAlign="left" fontWeight="600" fontSize="16px" color="RGB(118, 118, 118)">PASSWORD:</Text>
             <Input w="360px" height="50px"/>
-            <Text  marginTop="10px" paddingLeft="143px" textAlign="left">Must be 10 or more characters</Text>
+            <Text  marginTop="10px" paddingLeft="143px" textAlign="left">Must be 10 or more characters</Text> */}
             {/* <Input
               marginTop="30px"
               w="360px"
@@ -45,7 +70,7 @@ export const Signup=()=>{
             
             <Text marginTop="30px" marginBottom="10px" paddingLeft="143px" textAlign="left" fontWeight="600" fontSize="16px" color="RGB(118, 118, 118)">MOSTLY INTERESTED IN:</Text> */}
 
-            <Button marginBottom="40px" bg="rgb(45,45,45)" color="white" marginTop="30px" w="360px">JOIN ASOS</Button>
+            {/* <Button marginBottom="40px" bg="rgb(45,45,45)" color="white" marginTop="30px" w="360px">JOIN ASOS</Button> */}
         </Box>
         </Box>
         </>
