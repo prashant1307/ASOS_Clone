@@ -1,3 +1,4 @@
+
 import { Footer } from "../Components/Footer"
 import { Navbar } from "../Components/Navbar"
 import axios from "axios";
@@ -94,5 +95,6 @@ export const ProductPage=()=>{
         </Grid>
         <Footer/>
         </>
+
     )
 }
