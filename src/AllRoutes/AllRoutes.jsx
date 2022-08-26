@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom"
+import { Cart } from "./Cart"
+import { Checkout } from "./Checkout"
 import { Home } from "./Home"
 import { Login } from "./Login"
 import { ProductPage } from "./ProductPage"
@@ -14,6 +16,8 @@ export const AllRoutes=()=>{
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/products" element={<ProductPage/>}/>
+            <Route path="/cart" element={<Cart/>}/>
+            <Route path="/checkout" element={<Checkout/>}/>
         </Routes>
     )
 }
