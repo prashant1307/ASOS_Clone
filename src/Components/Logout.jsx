@@ -8,7 +8,7 @@ export const Logout=()=>{
     const handleLogout=async()=>{
         try {
             await logOut()
-            navigate("/login")
+            // navigate("/login")
         } catch (error) {
             console.log(error.message)
         }

@@ -1,5 +1,6 @@
 import { Box, Button, Center, Divider, Flex, FormLabel, Image, Input, Spacer, Text } from "@chakra-ui/react"
 import { useState } from "react"
+import GoogleButton from "react-google-button"
 import { Link, useNavigate } from "react-router-dom"
 import { UseUserAuth } from "../Context/AuthContext"
 export const Signup=()=>{
@@ -7,6 +8,7 @@ export const Signup=()=>{
     const [password,setPassword]=useState("")
     const [error,setError]=useState("")
     const {signUp}=UseUserAuth()
+    const {googleSignIn}=UseUserAuth()
     const navigate=useNavigate()
     const handleSubmit=async(e)=>{
         e.preventDefault()
@@ -18,6 +20,16 @@ export const Signup=()=>{
             setError(error.message)
         }
     }
+
+    const handleGoogleSignIn=async(e)=>{
+        e.preventDefault()
+        try {
+            await googleSignIn();
+            navigate("/")
+        } catch (error) {
+            setError(error.message)
+        }
+     }
     return (
         <>
         <Box bg="#EEEEEE" paddingBottom="100px">
@@ -40,12 +52,23 @@ export const Signup=()=>{
                  <Divider orientation='horizontal' />
             </Center>
              {error && <alert>{error}</alert>}
+             <Text marginTop="20px"  fontWeight="600" fontSize="20px" color="black">SIGN UP WITH...</Text>
+             <Box paddingBottom="10px" paddingTop="20px"  margin="auto" w="240px"><GoogleButton type="dark" onClick={handleGoogleSignIn}/></Box>
+             <Text>Signing up with social is super quick. No extra passwords to remember - no brain fail. Don't worry, we'd never share any of your data or post anything on your behalf #notevil</Text>
+             <Text marginTop="20px"  fontWeight="600" fontSize="20px" color="black">OR SIGN UP WITH EMAIL...</Text>
             <form onSubmit={handleSubmit}>
-                <FormLabel>email</FormLabel>
-                <Input type="email" onChange={(e)=>setEmail(e.target.value)}/>
-                <FormLabel>password</FormLabel>
-                <Input type="password" onChange={(e)=>setPassword(e.target.value)}/>
-                <Button type="submit">Submit</Button>
+                {/* <FormLabel>email</FormLabel> */}
+                <Text marginTop="10px" marginBottom="10px" paddingLeft="143px" textAlign="left" fontWeight="600" fontSize="16px" color="RGB(118, 118, 118)">EMAIL ADDRESS:</Text>
+                <Input w="360px" height="50px" type="email" onChange={(e)=>setEmail(e.target.value)}/>
+                <Text marginTop="30px" marginBottom="10px" paddingLeft="143px" textAlign="left" fontWeight="600" fontSize="16px" color="RGB(118, 118, 118)">FIRST NAME:</Text>
+            <Input w="360px" height="50px"/>
+            <Text marginTop="30px" marginBottom="10px" paddingLeft="143px" textAlign="left" fontWeight="600" fontSize="16px" color="RGB(118, 118, 118)">LAST NAME:</Text>
+            <Input w="360px" height="50px"/>
+                {/* <FormLabel>password</FormLabel> */}
+                <Text marginTop="30px" marginBottom="10px" paddingLeft="143px" textAlign="left" fontWeight="600" fontSize="16px" color="RGB(118, 118, 118)">PASSWORD:</Text>
+                <Input w="360px" height="50px" type="password" onChange={(e)=>setPassword(e.target.value)}/>
+                <Button marginBottom="40px" bg="rgb(45,45,45)" type="submit" color="white" marginTop="30px" w="360px">JOIN ASOS</Button>
+                {/* <Button type="submit">Submit</Button> */}
             </form>
             {/* <Text marginTop="20px" fontWeight="600" fontSize="20px" fontFamily="futura-pt, Tahoma, Geneva, Verdana, Arial, sans-serif" color="RGB(34, 34, 34)">SIGN UP WITH...</Text> */}
 
