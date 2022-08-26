@@ -8,7 +8,7 @@ function getProducts(params={}){
     return axios.get(`https://asos-server123.herokuapp.com/api/products`,{
         params:{
            
-            color:params.color,
+          //  color:params.color,
            brand:params.brand
         //    category:params.category
         }
