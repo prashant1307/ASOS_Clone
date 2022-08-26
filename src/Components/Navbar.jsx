@@ -1,5 +1,7 @@
 import { Box, Button, Center, Divider, Flex, Heading, Input, InputGroup, InputRightAddon, InputRightElement, Spacer, Text } from "@chakra-ui/react";
 import { BsBag } from 'react-icons/bs';
+import {FiHeart} from "react-icons/fi";
+import {MdAccountBox} from "react-icons/md";
 import {Search2Icon} from "@chakra-ui/icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -45,20 +47,21 @@ export const Navbar=()=>{
                 </Box>
                 <Box  w="113px" paddingLeft="20px" color="white" ><Text>WOMEN</Text></Box>
                 <Box  w="114px"  color="white" ><Text>MEN</Text></Box>
-                <Box w="695px" paddingRight="30px">
+                <Box w="695px" paddingRight="40px">
                     <InputGroup paddingLeft="30px"  w="650px">
                     <Input borderRadius="22px" bg="white" placeholder="Search for items and brands"/>
                     <InputRightElement children={<Search2Icon/>}/>
                     </InputGroup>
                 </Box>
-                {user?<Box  w="120px"  color="white" paddingRight="10px"><Text>{user.email}</Text></Box>:<Box  w="113px"  color="white" paddingRight="10px"><Text onClick={()=>navigate("/signup")}>Signup/Login</Text></Box>}
+                {user?<Box  w="120px"  color="white" paddingRight="10px"><Text>{user.email}</Text></Box>:<Box  w="83px"  color="white" ><MdAccountBox onClick={()=>navigate("/signup")} size="30px"/></Box>}
                 {/* <Box  w="113px"  color="white" paddingRight="10px"><Text onClick={()=>navigate("/signup")}>Signup/Login</Text></Box> */}
-                <Box  w="113px"  color="white" ><Text onClick={()=>navigate("/wishlist")}>Wishlist</Text></Box>
-                <Box  w="113px"  color="white" ><Text onClick={()=>navigate("/cart")}>Cart</Text></Box>
+                <Box  w="83px"  color="white" ><FiHeart  size="30px"/></Box>
+                {/* <Box  w="113px"  color="white" ><Text onClick={()=>navigate("/cart")}>Cart</Text></Box> */}
+                <Box  w="113px"  color="white" ><BsBag onClick={()=>navigate("/cart")} color="white" size="30px"/></Box>
                 {user?<Logout/>:null}
 
-                {/* <Box margin="auto" bg="white" w="50px" border="1px solid white"><BsBag size="30px"/></Box>
-                
+                {/* <Box margin="auto"  w="50px" border="1px solid white"><BsBag color="white" size="30px"/></Box> */}
+                {/*
                 <Box bg="white" w="50px" border="1px solid white"><BsBag size="30px"/></Box>
                 <Box bg="white" w="50px" border="1px solid white"><BsBag size="30px"/></Box> */}
                 
