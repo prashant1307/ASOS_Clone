@@ -163,7 +163,7 @@ export const Navbar=()=>{
 
       
             </Flex>
-            <Flex marginBottom="40px">
+            <Flex >
                 <Box w="50%" height="50px" bg="rgb(204,255,0)">
                     <Text fontWeight="700">GET AT LEAST AN EXTRA 15% OFF*</Text>
                     <Text fontWeight="700">WITH OUR SURPRISE CODE!</Text>
