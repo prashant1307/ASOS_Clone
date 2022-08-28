@@ -23,7 +23,8 @@ function postCart(item){
         image:item.image,
         price:item.price,
         color:item.color,
-        category:item.category
+        category:item.category,
+        qty:item.qty
     })
 }
 export const ProductPage=()=>{
