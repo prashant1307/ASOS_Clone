@@ -3,8 +3,7 @@ import { BsBag } from 'react-icons/bs';
 import {FiHeart} from "react-icons/fi";
 import {MdAccountBox} from "react-icons/md";
 import {Search2Icon} from "@chakra-ui/icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'

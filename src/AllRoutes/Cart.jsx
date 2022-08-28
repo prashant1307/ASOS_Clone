@@ -1,4 +1,4 @@
-import { Box, Button, Center, Divider, Flex, Spacer, Text } from "@chakra-ui/react"
+import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, Center, Divider, Flex, Spacer, Text } from "@chakra-ui/react"
 import { Footer } from "../Components/Footer"
 import { Navbar } from "../Components/Navbar"
 import {FiTruck} from "react-icons/fi";
@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Quantity from "../Components/Quantity";
 import Total from "../Components/Total";
+import { useNavigate } from "react-router-dom";
 
 function getCart(){
     return axios.get("https://asos-server123.herokuapp.com/api/cart")
@@ -23,6 +24,7 @@ function calculateTotal(products){
 }
 export const Cart=()=>{
 const [data,setData]=useState([])
+const navigate=useNavigate()
     useEffect(()=>{
         handleGetCart()
     },[])
@@ -56,6 +58,7 @@ const [data,setData]=useState([])
         })
         setData(updatedData)
     }
+    
     return (
         <>
         <Navbar/>
@@ -136,7 +139,7 @@ const [data,setData]=useState([])
             <Center height='25px'>
                  <Divider orientation='horizontal' />
             </Center>
-            <Button color="white" marginTop="20px" bg="rgb(1,136,73)" w="320px">CHECKOUT</Button>
+            <Button color="white" marginTop="20px" bg="rgb(1,136,73)" w="320px" onClick={()=>navigate("/checkout")}>PLACE ORDER</Button>
             </Box>
         </Flex>
         </Box>
