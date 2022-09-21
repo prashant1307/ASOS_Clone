@@ -14,20 +14,21 @@ Build using: React framework, Chakra-UI for Styling & Firebase for Authenticatio
 5. Editing your orders quantity and automatically does sub-total
 
 # Home Page
-![homepage](https://i.ibb.co/VCV2fBL/Screenshot-1.png)
+![Screenshot (1)](https://user-images.githubusercontent.com/101566092/191417907-93a933b7-1d01-4413-b9a4-d042e8482e67.png)
 
 # Signup Page
-![signup](https://i.ibb.co/cCp7F0T/Screenshot-5.png)
+![Screenshot (5)](https://user-images.githubusercontent.com/101566092/191417978-bd1fad70-6f38-4cb5-940f-523d1ffa94c3.png)
 
 # Login Page
-![login](https://i.ibb.co/C95Kfpj/Screenshot-6.png)
+![Screenshot (6)](https://user-images.githubusercontent.com/101566092/191418001-afd673e4-7684-41f3-8e19-d394e19fa9fa.png)
 
 # Product Page
-! [productpage](https://i.ibb.co/m6yVmSf/Screenshot-4.png)
+![Screenshot (4)](https://user-images.githubusercontent.com/101566092/191417953-dfb30675-6b63-4c46-a427-b2e01d530061.png)
 
 # Cart Page
-![cartpage](https://i.ibb.co/kDz9ZMb/Screenshot-7.png)
+![Screenshot (7)](https://user-images.githubusercontent.com/101566092/191418018-54e040bf-b188-483b-8fe1-ab1723e91979.png)
 
 # Checkout Page
-![checkoutpage](https://i.ibb.co/k9rMcFt/Screenshot-8.png)
+![Screenshot (8)](https://user-images.githubusercontent.com/101566092/191418068-8e8fec84-c728-426a-b263-465d50806bd0.png)
+
 
